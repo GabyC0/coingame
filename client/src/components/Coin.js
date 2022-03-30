@@ -43,6 +43,12 @@ export const Coin = () => {
         }
     };
 
+    function reset(){
+        setImgUrl(null);
+        setScore(0);
+        setClickedButton(0);
+        setDisabledBtn(false);
+    }
     
 
 
@@ -56,8 +62,9 @@ export const Coin = () => {
 
   return (
     <div>
-        <button disabled={disabledBtn}onClick={() => flipCoin()}>Flip</button>
-        <button onClick={() => setImgUrl(null)}>Reset</button>
+        <button disabled={disabledBtn} onClick={() => flipCoin()}>Flip</button>
+        {/* <button onClick={() => setImgUrl(null)}>Reset</button> */}
+        <button onClick={() => reset()}>Reset</button>
         {coinImg}
     </div>
   );
