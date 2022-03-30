@@ -26,7 +26,7 @@ function Players() {
         <h2> List of Players </h2>
         <ul>
             {players.map(player =>
-                <li key={player.id}> {player.playername} {player.playerscore}</li>)}
+                <li key={player.id}><b>Player:</b>  {player.playername} <b>Score:</b> {player.playerscore}</li>)}
         </ul>
         <Form addStudent={addPlayer} />
       </div>

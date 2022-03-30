@@ -3,7 +3,8 @@ import { useState } from "react";
 const Form = (props) => {
     const [player, setPlayer] = useState({
         playername: "",
-        playerscore: ""
+        playerscore: "",
+        guess: ""
     });
 
     //create functions that handle the event of the user typing into the form
@@ -18,6 +19,14 @@ const Form = (props) => {
         setPlayer((player) => ({ ...player, playerscore }));
 
     }
+
+    const handleGuessChange = (event) => {
+        const guess = event.target.value;
+        setPlayer((player) => ({ ...player, guess }));
+
+    }
+
+
 
     //A function to handle the post request
     const postPlayer = async (newPlayer) => {
@@ -58,6 +67,15 @@ const Form = (props) => {
                     required
                     value={player.score}
                     onChange={handleScoreChange}
+                />
+                <label>Heads or Tails?</label>
+                <input
+                    type="text"
+                    id="add-player-guess"
+                    placeholder="Guess"
+                    required
+                    value={player.guess}
+                    onChange={handleGuessChange}
                 />
             </fieldset>
             <button type="submit">Add</button>
