@@ -7,6 +7,8 @@ export const Coin = () => {
     //set state for img
     const [imgUrl, setImgUrl] = useState(null);
     const [score, setScore] = useState(0);
+    const [clickedButton, setClickedButton] = useState(0);
+    const [disabledBtn, setDisabledBtn] = useState(false)
 
     function flipCoin() {
         let randomNum = Math.round(Math.random() * (2-1) + 1);
@@ -26,6 +28,19 @@ export const Coin = () => {
         setScore(currentScore);
         console.log('current score', currentScore);
         
+        // if (currentScore === 3 ) {
+        //     console.log('game over');
+        // }
+
+        const btnClick = clickedButton + 1;
+        setClickedButton(btnClick);
+        console.log ('times clicked', btnClick);
+
+        if (btnClick === 3 ) {
+            setDisabledBtn(true);
+            //disabledBtn = false;
+            console.log('game over');
+        }
     };
 
     
@@ -41,7 +56,7 @@ export const Coin = () => {
 
   return (
     <div>
-        <button onClick={() => flipCoin()}>Flip</button>
+        <button disabled={disabledBtn}onClick={() => flipCoin()}>Flip</button>
         <button onClick={() => setImgUrl(null)}>Reset</button>
         {coinImg}
     </div>
